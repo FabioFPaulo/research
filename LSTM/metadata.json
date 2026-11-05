@@ -1,0 +1,191 @@
+{
+    "features": 127,
+    "samples": 4300,
+    "sequence_length": 15,
+    "gestures": [
+        "HOLD",
+        "IDLE_1",
+        "IDLE_2",
+        "POINTER",
+        "ZOOM",
+        "IDLE_3",
+        "IDLE_4",
+        "CLICK"
+    ],
+    "inputs": [
+        "input"
+    ],
+    "outputs": [
+        "logits",
+        "probabilities",
+        "confidence",
+        "predicted_class",
+        "result"
+    ],
+    "layers": [
+        "LSTM(127, 64, batch_first=True)",
+        "Dropout(p=0.4, inplace=False)",
+        "Linear(in_features=64, out_features=32, bias=True)",
+        "Dropout(p=0.4, inplace=False)",
+        "Linear(in_features=32, out_features=8, bias=True)"
+    ],
+    "train_eval_stats": {
+        "callbacks": [
+            "EarlyStopping(patiente=10, min_delta=0.0001, verbose=False)"
+        ],
+        "trainer_options": {
+            "test_size": 0.2,
+            "random_state": 32,
+            "epochs": 100,
+            "batch_size": 32,
+            "learning_rate": 0.001
+        },
+        "criterion": "CrossEntropyLoss()",
+        "optimizer": "Adam (\nParameter Group 0\n    amsgrad: False\n    betas: (0.9, 0.999)\n    capturable: False\n    decoupled_weight_decay: False\n    differentiable: False\n    eps: 1e-08\n    foreach: None\n    fused: None\n    lr: 0.001\n    maximize: False\n    weight_decay: 0\n)",
+        "classification_report": {
+            "HOLD": {
+                "precision": 0.9858156028368794,
+                "recall": 0.9928571428571429,
+                "f1-score": 0.9893238434163701,
+                "support": 140.0
+            },
+            "IDLE_1": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 80.0
+            },
+            "IDLE_2": {
+                "precision": 0.9900990099009901,
+                "recall": 1.0,
+                "f1-score": 0.9950248756218906,
+                "support": 100.0
+            },
+            "POINTER": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 100.0
+            },
+            "ZOOM": {
+                "precision": 1.0,
+                "recall": 0.9928571428571429,
+                "f1-score": 0.996415770609319,
+                "support": 140.0
+            },
+            "IDLE_3": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1-score": 1.0,
+                "support": 100.0
+            },
+            "IDLE_4": {
+                "precision": 0.9803921568627451,
+                "recall": 1.0,
+                "f1-score": 0.9900990099009901,
+                "support": 100.0
+            },
+            "CLICK": {
+                "precision": 0.9896907216494846,
+                "recall": 0.96,
+                "f1-score": 0.9746192893401016,
+                "support": 100.0
+            },
+            "accuracy": 0.9930232558139535,
+            "macro avg": {
+                "precision": 0.9932496864062624,
+                "recall": 0.9932142857142857,
+                "f1-score": 0.9931853486110839,
+                "support": 860.0
+            },
+            "weighted avg": {
+                "precision": 0.9930608991145177,
+                "recall": 0.9930232558139535,
+                "f1-score": 0.9929975156394124,
+                "support": 860.0
+            }
+        },
+        "confusion_matrix": [
+            [
+                139,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            [
+                0,
+                80,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                100,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                100,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                139,
+                0,
+                1,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0,
+                100,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                100,
+                0
+            ],
+            [
+                2,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1,
+                96
+            ]
+        ]
+    }
+}
